@@ -18,7 +18,12 @@ export class Server {
 
   async start() {
     const port = process.env.PORT;
+    
     this.app.listen(port || 3000);
+
+    //* configuracion de JSON en peticiones
+    //* Puede agreagar mas middlewares para diferentes formatos
+    this.app.use(express.json());
 
     //* Routes
     this.app.use(this.routes);
